@@ -1,0 +1,60 @@
+Author: Jayden Dy
+ULTIMATE PW CRACKING GUIDE:
+
+- Use incremental approach, follow the steps as they're writeten
+- Take youre time, usually you won't be in a rush. 
+- If all steps fail, brainstorm possible passwords
+- Make sure to add new methods to this guide!
+
+1. Always launch a simple rockyou.txt dictionary crack
+2. If prompt is provided, interpret the prompt and outline possible password canidates... also make examples.
+3. See if you can use an mask attack pattern if matches the prompt. (-a 3 or -a 6 for dictionaries)
+4. Add to outline possiblities for why Step 3 did not work (If not running step 3, then skip)
+5. Create a custom wordlist, take your time and make sure you try to get all elements inside of this wordlist. Use scripts to alter or make your wordlist stronger. Use PW cracking rules to create a stronger wordlist. RESEARCH AND DECIPHER WHAT A WORDLIST WILL DO BEFORE USING.
+6. If did not work reflect on why and try to create a stronger wordlist
+7. If you're stuck, theres probably a rule out there that you're not aware of. Do some more research and document what each rule does
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+hashid -m "[hash]" - Determines hash function and mode inside of hashcat
+Input \ next to the $ signs to get the correct output
+
+echo -n {Password} | md5sum - Shows the MD5 hash of a password
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Cewl [url] - creates a custom wordlist based on a url. Also returns general words, use chatgpt to filter to a specific subject
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+John the ripper:
+john ~/hash.txt
+--wordlist=words.txt
+--format=format(Ex:NTLM,MD5)
+--rules=rule
+--list = formats finds all formats inside of john
+Ex: john dump.txt:
+-autodetects hash
+- Uses standard Joh wordlist
+- Uses basic rules if wordlist doesn't work
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Munged
+-Python script
+- Stronger pass rule, replaces letters with symbols and adds characters
+-L for level (1-9)
+-i: input
+-o: output
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Custom Password Cracking Rules:
+Custom rule to capitalize first letter and append a # 0-9 at the end: cAz "[0-9]"
+Capitalize first, add symbol, add a number 0-9: cAz "[!$@#][0-9]"
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Cool wordlists:
+located in /usr/share/wordlists
+fasttrack - quick and easy
+/metasploit - Specific , Ex: tomcat
+/specialist/passwords
+grep "Password001" rockyou.txt: Searches for Password001 inside of rockyou
+grep ^123456$ rockyou.txt: Searches for 123456 inside of rockyou.txt
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Crackstation:
+Website that can identify and try to crack unsalted hashes
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Cracking passwords on ZIP files
+
+    fcrackzip -D -p /usr/share/wordlists/rockyou.txt -u /path/nameofzipfile
+s
